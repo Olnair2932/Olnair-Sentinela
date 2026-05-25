@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => { console.log(`Servidor de porta ${PORT} iniciado.`); });
 const admin = require("firebase-admin");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG_JSON);
+/* FIREBASE AUTO DETECT */ let serviceAccount; if (process.env.FIREBASE_CONFIG_JSON) { serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG_JSON); console.log("🔥 Firebase via ENV"); } else { serviceAccount = require("./chave.json"); console.log("📁 Firebase via arquivo local"); }
 
 if (!admin.apps.length) {
     admin.initializeApp({
