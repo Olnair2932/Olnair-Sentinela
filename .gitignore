@@ -3,3 +3,4 @@ node_modules
 chave.json
 sentinela.log
 *.log
+.firebase/
