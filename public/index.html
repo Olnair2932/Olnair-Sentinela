@@ -119,8 +119,8 @@
                 chatDiv.scrollTop = chatDiv.scrollHeight;
             };
 
-            const respostasRef = query(ref(rtdb, 'respostas'), limitToLast(1));
-            onValue(respostasRef, (snapshot) => {
+            const respostasRef = ref(rtdb, 'respostas');
+            onChildAdded(respostasRef, (snapshot) => {
                 loading.classList.add('hidden');
                 const res = snapshot.val().texto;
                 chatDiv.innerHTML += `<div class="bg-blue-900/10 p-4 rounded-lg mr-12 border border-blue-800/50 text-slate-100 markdown-body">
