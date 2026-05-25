@@ -1,7 +1,7 @@
 require('dotenv').config();
 const admin = require("firebase-admin");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const serviceAccount = require("./chave.json");
+let serviceAccount; if (process.env.FIREBASE_CONFIG_JSON) { serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG_JSON); } else { serviceAccount = {}; console.error("⚠️ AVISO: Nenhuma credencial encontrada!"); }
 
 if (!admin.apps.length) {
     admin.initializeApp({
