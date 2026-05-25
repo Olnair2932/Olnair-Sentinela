@@ -1,8 +1,4 @@
 require('dotenv').config();
-const http = require("http");
-const server = http.createServer((req, res) => { res.writeHead(200, { "Content-Type": "text/plain" }); res.end("Sentinela v3.2 Online!"); });
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => { console.log(`Servidor de porta ${PORT} iniciado.`); });
 const admin = require("firebase-admin");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const serviceAccount = require("./chave.json");

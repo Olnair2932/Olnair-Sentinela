@@ -1,4 +1,5 @@
-chave.json
-node_modules/
-sentinela.log
+node_modules
 .env
+chave.json
+sentinela.log
+*.log

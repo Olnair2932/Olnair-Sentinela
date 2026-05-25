@@ -1,19 +1,13 @@
 {
-  "name": "sentinela",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "sentinela-v3",
+  "version": "3.2.0",
+  "main": "sentinela.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node sentinela.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
-    "@google/generative-ai": "^0.24.1",
-    "dotenv": "^17.4.2",
-    "firebase": "^12.13.0",
-    "firebase-admin": "^13.10.0"
+    "firebase-admin": "^12.0.0",
+    "@google/generative-ai": "^0.1.0",
+    "dotenv": "^16.0.0"
   }
 }
