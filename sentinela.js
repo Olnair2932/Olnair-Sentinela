@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => { console.log(`Servidor de porta ${PORT} iniciado.`); });
 const admin = require("firebase-admin");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const serviceAccount = require("./chave.json");
+const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG_JSON);
 
 if (!admin.apps.length) {
     admin.initializeApp({
