@@ -1,0 +1,3 @@
+reset-ia
+Este comando reinicia o bot whatsapp
+
