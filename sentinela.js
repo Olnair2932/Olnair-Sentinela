@@ -41,6 +41,15 @@ async function manterHistoricoLimpo() {
 
 console.log("🚀 SENTINELA ONLINE - Status Ativo");
 
+// Monitor de Reset Remoto
+rtdb.ref("controle/reset").on("value", (snapshot) => {
+    if (snapshot.val() === true) {
+        console.log("⚠️ RESET REMOTO RECEBIDO! Reiniciando...");
+        rtdb.ref("controle/reset").set(false);
+        process.exit(1);
+    }
+});
+
 const queueRef = rtdb.ref('fila_entrada');
 
 queueRef.on('child_added', async (snapshot) => {
