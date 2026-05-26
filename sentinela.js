@@ -1,6 +1,6 @@
 require('dotenv').config();
 const http = require("http");
-const server = http.createServer((req, res) => { res.writeHead(200, { "Content-Type": "text/plain" }); res.end("Sentinela v3.2 Online!"); });
+const server = http.createServer((req, res) => { res.writeHead(200, { "Content-Type": "text/plain" }); res.end("Sentinela Online!"); });
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => { console.log(`Servidor de porta ${PORT} iniciado.`); });
 const admin = require("firebase-admin");
@@ -20,7 +20,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_KEY);
 
 const model = genAI.getGenerativeModel({ 
     model: "gemini-3.1-flash-lite",
-    systemInstruction: "Você é o Sentinela v3.2. Olnair é seu desenvolvedor. Use Markdown em suas respostas. Você é o Amigo Fiel de Porto Alegre com memória unificada."
+    systemInstruction: "Você é o Sentinela. Olnair é seu desenvolvedor. Use Markdown em suas respostas. Você é o Amigo Fiel de Porto Alegre com memória unificada."
 });
 
 // FUNÇÃO DE SANITIZAÇÃO (Mantém apenas as últimas 100 mensagens no Firestore)
@@ -39,7 +39,7 @@ async function manterHistoricoLimpo() {
     } catch (e) { console.error("⚠️ Erro na limpeza:", e.message); }
 }
 
-console.log("🚀 SENTINELA v3.2 ONLINE - Com Auto-Limpeza de Memória");
+console.log("🚀 SENTINELA ONLINE - Status Ativo");
 
 const queueRef = rtdb.ref('fila_entrada');
 
