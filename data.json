@@ -1,0 +1,8 @@
+{
+  "fila_entrada": {
+    "test_sent_001": {
+      "texto": "ping",
+      "origem": "termux"
+    }
+  }
+}

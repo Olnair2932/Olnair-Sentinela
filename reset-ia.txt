@@ -1,5 +1,0 @@
-# Inicia o Sentinela no PM2
-pm2 start sentinela.js --name "sentinela-v3"
-
-# Salva a lista de processos para persistir após reinicialização
-pm2 save
