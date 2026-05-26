@@ -2,15 +2,22 @@ require('dotenv').config();
 const http = require("http");
 const server = http.createServer((req, res) => { res.writeHead(200, { "Content-Type": "text/plain" }); res.end("Sentinela Online!"); });
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => { console.log(`Servidor de porta ${PORT} iniciado.`); });
+server.listen(PORT, () => { console.log(\`Servidor de porta \${PORT} iniciado.\`); });
+
 const admin = require("firebase-admin");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-/* FIREBASE AUTO DETECT */ let serviceAccount; if (process.env.FIREBASE_CONFIG_JSON) { serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG_JSON); console.log("🔥 Firebase via ENV"); } else { serviceAccount = require("./chave.json"); console.log("📁 Firebase via arquivo local"); }
+
+// INICIALIZAÇÃO ROBUSTA
+const firebaseConfig = {
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+    privateKey: process.env.FIREBASE_PRIVATE_KEY ? process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n') : ""
+};
 
 if (!admin.apps.length) {
     admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-      databaseURL: "https://minhaiamemoria-default-rtdb.firebaseio.com"
+        credential: admin.credential.cert(firebaseConfig),
+        databaseURL: "https://minhaiamemoria-default-rtdb.firebaseio.com"
     });
 }
 
@@ -18,7 +25,7 @@ const db = admin.firestore();
 const rtdb = admin.database();
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_KEY);
 
-const model = genAI.getGenerativeModel({ 
+const model = genAI.getGenerativeModel({
     model: "gemini-3.1-flash-lite",
     systemInstruction: "Você é o Sentinela. Olnair é seu desenvolvedor. Use Markdown em suas respostas. Você é o Amigo Fiel de Porto Alegre com memória unificada."
 });
