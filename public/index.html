@@ -32,7 +32,7 @@
             <div class="flex items-center gap-2">
                 <!-- BOTÃO DE DOWNLOAD VERDE -->
                 <button id="download-btn" class="text-[10px] bg-green-600 hover:bg-green-500 text-white px-3 py-1 rounded font-bold transition shadow-lg shadow-green-900/20">BAIXAR TXT</button>
-                <button id="logout-btn" class="text-[10px] bg-slate-800 hover:bg-red-900/30 text-slate-400 px-3 py-1 rounded border border-slate-700 transition">SAIR</button>
+                <button id="limpar-btn" onclick="limparConversa()" class="text-[10px] bg-yellow-900/30 hover:bg-yellow-700 text-yellow-400 px-3 py-1 rounded border border-yellow-900 transition">LIMPAR</button> <button id="reset-btn" onclick="resetarSentinela()" class="text-[10px] bg-red-900/30 hover:bg-red-700 text-red-400 px-3 py-1 rounded border border-red-900 transition">RESET</button> <button id="logout-btn" class="text-[10px] bg-slate-800 hover:bg-red-900/30 text-slate-400 px-3 py-1 rounded border border-slate-700 transition">SAIR</button>
             </div>
         </header>
 
@@ -108,6 +108,12 @@ import { set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database
                 signOut(auth);
             }
         });
+
+window.limparConversa = () => {
+    if(confirm("Deseja apagar todo o histórico de conversas?")) {
+        set(ref(rtdb, "controle/limpar"), true);
+    }
+};
 
 window.resetarSentinela = () => {
     if(confirm("Confirmar reinicio do Sentinela?")) {

@@ -42,11 +42,115 @@ async function manterHistoricoLimpo() {
 console.log("🚀 SENTINELA ONLINE - Status Ativo");
 
 // Monitor de Reset Remoto
-rtdb.ref("controle/reset").on("value", (snapshot) => {
+
+// Monitor de Limpeza Remota
+rtdb.ref("controle/limpar").on("value", async (snapshot) => {
     if (snapshot.val() === true) {
+        console.log("🧹 LIMPEZA REMOTA RECEBIDA! Apagando histórico...");
+        const docs = await db.collection("historico").get();
+        const batch = db.batch();
+        docs.forEach(doc => batch.delete(doc.ref));
+        await batch.commit();
+        rtdb.ref("controle/limpar").set(false);
+        console.log("✅ Histórico limpo com sucesso.");
+    }
+});
+rtdb.ref("controle/reset").on("value", (snapshot) => {
+
+// Monitor de Limpeza Remota
+rtdb.ref("controle/limpar").on("value", async (snapshot) => {
+    if (snapshot.val() === true) {
+        console.log("🧹 LIMPEZA REMOTA RECEBIDA! Apagando histórico...");
+        const docs = await db.collection("historico").get();
+        const batch = db.batch();
+        docs.forEach(doc => batch.delete(doc.ref));
+        await batch.commit();
+        rtdb.ref("controle/limpar").set(false);
+        console.log("✅ Histórico limpo com sucesso.");
+    }
+});
+    if (snapshot.val() === true) {
+
+// Monitor de Limpeza Remota
+rtdb.ref("controle/limpar").on("value", async (snapshot) => {
+    if (snapshot.val() === true) {
+        console.log("🧹 LIMPEZA REMOTA RECEBIDA! Apagando histórico...");
+        const docs = await db.collection("historico").get();
+        const batch = db.batch();
+        docs.forEach(doc => batch.delete(doc.ref));
+        await batch.commit();
+        rtdb.ref("controle/limpar").set(false);
+        console.log("✅ Histórico limpo com sucesso.");
+    }
+});
         console.log("⚠️ RESET REMOTO RECEBIDO! Reiniciando...");
+
+// Monitor de Limpeza Remota
+rtdb.ref("controle/limpar").on("value", async (snapshot) => {
+    if (snapshot.val() === true) {
+        console.log("🧹 LIMPEZA REMOTA RECEBIDA! Apagando histórico...");
+        const docs = await db.collection("historico").get();
+        const batch = db.batch();
+        docs.forEach(doc => batch.delete(doc.ref));
+        await batch.commit();
+        rtdb.ref("controle/limpar").set(false);
+        console.log("✅ Histórico limpo com sucesso.");
+    }
+});
         rtdb.ref("controle/reset").set(false);
+
+// Monitor de Limpeza Remota
+rtdb.ref("controle/limpar").on("value", async (snapshot) => {
+    if (snapshot.val() === true) {
+        console.log("🧹 LIMPEZA REMOTA RECEBIDA! Apagando histórico...");
+        const docs = await db.collection("historico").get();
+        const batch = db.batch();
+        docs.forEach(doc => batch.delete(doc.ref));
+        await batch.commit();
+        rtdb.ref("controle/limpar").set(false);
+        console.log("✅ Histórico limpo com sucesso.");
+    }
+});
         process.exit(1);
+
+// Monitor de Limpeza Remota
+rtdb.ref("controle/limpar").on("value", async (snapshot) => {
+    if (snapshot.val() === true) {
+        console.log("🧹 LIMPEZA REMOTA RECEBIDA! Apagando histórico...");
+        const docs = await db.collection("historico").get();
+        const batch = db.batch();
+        docs.forEach(doc => batch.delete(doc.ref));
+        await batch.commit();
+        rtdb.ref("controle/limpar").set(false);
+        console.log("✅ Histórico limpo com sucesso.");
+    }
+});
+    }
+
+// Monitor de Limpeza Remota
+rtdb.ref("controle/limpar").on("value", async (snapshot) => {
+    if (snapshot.val() === true) {
+        console.log("🧹 LIMPEZA REMOTA RECEBIDA! Apagando histórico...");
+        const docs = await db.collection("historico").get();
+        const batch = db.batch();
+        docs.forEach(doc => batch.delete(doc.ref));
+        await batch.commit();
+        rtdb.ref("controle/limpar").set(false);
+        console.log("✅ Histórico limpo com sucesso.");
+    }
+});
+});
+
+// Monitor de Limpeza Remota
+rtdb.ref("controle/limpar").on("value", async (snapshot) => {
+    if (snapshot.val() === true) {
+        console.log("🧹 LIMPEZA REMOTA RECEBIDA! Apagando histórico...");
+        const docs = await db.collection("historico").get();
+        const batch = db.batch();
+        docs.forEach(doc => batch.delete(doc.ref));
+        await batch.commit();
+        rtdb.ref("controle/limpar").set(false);
+        console.log("✅ Histórico limpo com sucesso.");
     }
 });
 
